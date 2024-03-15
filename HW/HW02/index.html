@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework02</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="main">
+        <div id="d_Top">
+            <h1><span id="student_id">202327005</span><span id="student_name"> 김동현</span></h1>
+        </div>
+        <div id="d_Left" class="main">
+            <button id="button1" class="buttons"><span>버튼1</span></button>
+            <button id="button2" class="buttons"><span>버튼2</span></button>
+        </div>
+        <div id="d_Right" class="main">
+            <div class="contents"><span id="blankText">빈화면</span></div>
+            <canvas class="contents" style="background-color:cadetblue;" width="600px" height="394px"></canvas>
+            <div class="contents" style="background-color:cadetblue;" id="gamePage">
+                <div>
+                    <img src="IMG/image.png" alt="사진">
+                </div>
+                <div>
+                    <ul>
+                        <li>Hollow Knight</li>
+                        <li>2017년 2월 25일 (Steam)</li>
+                        <li>매트로배니아, 소울라이크</li>
+                        <li>정말로 무너진 왕국을 탐험하는 기분을 들게하는 어려우면서도 성취감 있는 치밀한 레벨 디자인과 다른 게임에 비해 단순한 전투 시스템을 가졌음에도 매력적인 몬스터 공격 패턴과 부적 시스템으로 전투가 매우 재밌음.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var pages = document.getElementsByClassName("contents");
+        var buttons = document.getElementsByClassName("buttons");
+        var ctx = pages[1].getContext('2d');
+
+        for (let i = 0; i < 3; i++){
+            pages[i].style.display = "none";
+        }
+        pages[0].style.display = "block";
+
+        for (let i = 0; i < 2; i++){
+            buttons[i].addEventListener("click", ()=>{
+                ActivePage(i);
+            });
+        }
+
+        ctx.beginPath();
+        ctx.arc(300, 394/2, 150, 0, Math.PI * 2);
+        ctx.fillStyle = "white";
+        ctx.fill();
+        ctx.stroke();
+
+        function ActivePage(index){
+            for (let i = 0; i < 3; i++){
+                pages[i].style.display = "none";
+            }
+            pages[index + 1].style.display = "block";
+        }
+    </script>
+</body>
+</html>

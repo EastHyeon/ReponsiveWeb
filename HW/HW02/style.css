@@ -1,0 +1,88 @@
+#main{
+    width: 800px;
+    height: 450px;
+    background-color: white;
+}
+#d_Top{
+    text-align: right;
+    background-color: black;
+    width: 800px;
+    height: 56px;
+}
+#d_Top h1{
+    margin-right: 15px;
+}
+#student_id{
+    color: white;
+    vertical-align: middle;
+}
+#student_name{
+    color: aliceblue;
+    font-size: smaller;
+    vertical-align: middle;
+}
+.main{
+    height: 394px;
+}
+#d_Left{
+    float: left;
+    width: 200px;
+    background-color: skyblue;
+    text-align: center;
+}
+.buttons{
+    width: 150px;
+    height: 50px;
+    margin: 8px;
+    padding: 8px;
+    border: 1px solid black;
+    background-color: lightgray;
+    color: white;
+    font-size: 30px;
+}
+.buttons span{
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+#button1{
+
+}
+#button2{
+
+}
+#d_Right{
+    float: left;
+    width: 600px;
+    background-color:azure;
+    text-align: center;
+}
+#blankText {
+    color: black;
+    font-size: 40px;
+    line-height: 394px;
+}
+.contents{
+    width: 600px;
+    height: 394px;
+}
+#gamePage{
+    text-align: left;
+}
+#gamePage div:first-child{
+    width: 300px;
+    height: 394px;
+    text-align: center;
+    float: left;
+}
+#gamePage div:first-child img{
+    width: 200px;
+    transform: translate(0%, 25%);
+}
+#gamePage div:last-child{
+    width: 300px;
+    height: 394px;
+    float: left;
+}
+#gamePage div:last-child ul{
+    padding: 50px;
+}
