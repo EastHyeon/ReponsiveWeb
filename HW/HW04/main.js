@@ -1,4 +1,4 @@
-var canvas = document.getElementById('myCanvas');
+var canvas = document.getElementById('GameScreenCanvas');
 var ctx = canvas.getContext('2d');
 
 var studentId = 202327005;
@@ -6,18 +6,26 @@ var studentId = 202327005;
 const SEGMENT_HORIZONTAL_SIZE = 1;
 const SEGMENT_VERTICAL_SIZE = 4;
 
-drawNum(studentId, 4, 0, 0);
+
+// (50,300) (974,300) magenta 3
+ctx.beginPath();
+ctx.moveTo(50,canvas.height/2);
+ctx.lineTo(canvas.width - 50, canvas.height/2);
+ctx.strokeStyle = "magenta";
+ctx.lineWidth = 3;
+ctx.stroke();
+ctx.closePath();
 
 function drawNum(num, fontSize, x, y)
 {
     var padding = (SEGMENT_VERTICAL_SIZE * fontSize) + (SEGMENT_HORIZONTAL_SIZE * 4 * fontSize) + (fontSize * 0.4 * 2) + fontSize;
-
+    
     var digit = 0;
     for (var i = num; parseInt(i) != 0; i /= 10)
     {
         digit++;
     }
-
+    
     const CONST_NUM = num;
     const CONST_DIGIT = digit;
     for (var i = 0; i < CONST_DIGIT; i++)
@@ -27,7 +35,7 @@ function drawNum(num, fontSize, x, y)
         num %= (10 ** digit);
         sevenSegment(padding * i + x, y, fontSize, 8, "lightgray");
     }
-
+    
     num = CONST_NUM;
     digit = CONST_DIGIT;
     for (var i = 0; i < CONST_DIGIT; i++)
@@ -38,6 +46,8 @@ function drawNum(num, fontSize, x, y)
         sevenSegment(padding * i + x, y, fontSize, digitNum, "black");
     }
 }
+
+drawNum(studentId, 4, 0, 0);
 
 function sevenSegment(x, y, fontSize, num, color)
 {
