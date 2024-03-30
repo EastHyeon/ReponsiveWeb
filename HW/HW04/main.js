@@ -18,7 +18,7 @@ ctx.closePath();
 
 function drawNum(num, fontSize, x, y)
 {
-    var padding = (SEGMENT_VERTICAL_SIZE * fontSize) + (SEGMENT_HORIZONTAL_SIZE * 4 * fontSize) + (fontSize * 0.2) + fontSize;
+    var padding = (SEGMENT_VERTICAL_SIZE * fontSize) + (SEGMENT_HORIZONTAL_SIZE * 4 * fontSize) + (fontSize * 0.8) + fontSize;
     
     var digit = 0;
     for (var i = num; parseInt(i) != 0; i /= 10)
