@@ -30,11 +30,11 @@ function drawNum(num, fontSize, x, y)
         sevenSegment(padding * i + x, y, fontSize, 8, "lightgray");
     }
 
-    for (var i = 1; i < (digit + 1); i++)
+    for (var i = 0; i < digit; i++)
     {
-        var digitNum = num / (10 ** (digit - i));
-        num %= (10 ** (digit - i));
-        sevenSegment(padding * (i - 1) + x, y, fontSize, digitNum, "black");
+        var digitNum = num / (10 ** (digit - (i + 1)));
+        num %= (10 ** (digit - (i + 1)));
+        sevenSegment(padding * i + x, y, fontSize, digitNum, "black");
     }
 }
 
