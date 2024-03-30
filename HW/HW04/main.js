@@ -22,27 +22,18 @@ function drawNum(num, fontSize, x, y)
     
     var digit = 0;
     for (var i = num; parseInt(i) != 0; i /= 10)
-    {
         digit++;
-    }
     
-    const CONST_NUM = num;
     const CONST_DIGIT = digit;
-    for (var i = 0; i < CONST_DIGIT; i++)
+    for (var i = 0; i < digit; i++)
     {
-        digit--;
-        var digitNum = num / (10 ** digit);
-        num %= (10 ** digit);
         sevenSegment(padding * i + x, y, fontSize, 8, "lightgray");
     }
-    
-    num = CONST_NUM;
-    digit = CONST_DIGIT;
-    for (var i = 0; i < CONST_DIGIT; i++)
+
+    for (var i = 1; i < digit; i++)
     {
-        digit--;
-        var digitNum = num / (10 ** digit);
-        num %= (10 ** digit);
+        var digitNum = num / (10 ** (digit - i));
+        num %= (10 ** (digit - i));
         sevenSegment(padding * i + x, y, fontSize, digitNum, "black");
     }
 }
