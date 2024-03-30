@@ -18,7 +18,7 @@ ctx.closePath();
 
 function drawNum(num, fontSize, x, y)
 {
-    var padding = (SEGMENT_VERTICAL_SIZE * fontSize) + (SEGMENT_HORIZONTAL_SIZE * 4 * fontSize) + (fontSize * 0.4 * 2) + fontSize;
+    var padding = (SEGMENT_VERTICAL_SIZE * fontSize) + (SEGMENT_HORIZONTAL_SIZE * 4 * fontSize) + (fontSize * 0.2) + fontSize;
     
     var digit = 0;
     for (var i = num; parseInt(i) != 0; i /= 10)
@@ -30,11 +30,11 @@ function drawNum(num, fontSize, x, y)
         sevenSegment(padding * i + x, y, fontSize, 8, "lightgray");
     }
 
-    for (var i = 1; i < digit; i++)
+    for (var i = 1; i < (digit + 1); i++)
     {
         var digitNum = num / (10 ** (digit - i));
         num %= (10 ** (digit - i));
-        sevenSegment(padding * i + x, y, fontSize, digitNum, "black");
+        sevenSegment(padding * (i - 1) + x, y, fontSize, digitNum, "black");
     }
 }
 
