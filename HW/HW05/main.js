@@ -1,7 +1,9 @@
 var canvas = document.getElementById("GameScreenCanvas");
 var ctx = canvas.getContext('2d');
 
-
+var seta1 = 0;
+var seta2 = 0;
+var seta3 = 0;
 
 class Rect
 {
