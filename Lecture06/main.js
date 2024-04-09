@@ -286,12 +286,11 @@ setInterval(() => {
         var currentDate = new Date();
         if (currentDate.getTime() - prevDate.getTime() > 200)
         {
-            if(Math.abs(posX - prevPosX) > 30 || Math.abs(posY - prevPosY) > 30)
+            var direction = new Vector(prevPosX - posX, prevPosY - posY);
+            var magnitude = Math.sqrt(direction.x * direction.x + direction.y * direction.y);
+            if(magnitude > 50)
             {
-                var direction = new Vector(prevPosX - posX, prevPosY - posY);
-                var magnitude = Math.sqrt(direction.x * direction.x + direction.y * direction.y);
-                if(magnitude > 0)
-                    direction = new Vector(direction.x / magnitude, direction.y / magnitude);
+                direction = new Vector(direction.x / magnitude, direction.y / magnitude);
                 
                 effectPool.push(
                     new MouseEffector(
