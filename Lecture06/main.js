@@ -29,13 +29,13 @@ class HeartObject
 
             rx -= radius;
             
+            rx *= this.scale;
+            ry *= this.scale;
+
             tempX = rx;
             tempY = ry;
             rx = (tempX * Math.cos(this.seta) + tempY * Math.sin(this.seta));
             ry = (tempX * -Math.sin(this.seta) + tempY * Math.cos(this.seta));
-            
-            rx *= this.scale;
-            ry *= this.scale;
             
             rx += this.posX;
             ry += this.posY;
@@ -55,13 +55,13 @@ class HeartObject
             
             rx -= radius;
             
+            rx *= this.scale;
+            ry *= this.scale;
+
             tempX = rx;
             tempY = ry;
             rx = (tempX * Math.cos(this.seta) + tempY * Math.sin(this.seta));
-            ry = (tempX * -Math.sin(this.seta) + tempY * Math.cos(this.seta));
-
-            rx *= this.scale;
-            ry *= this.scale;
+            ry = (tempX * -Math.sin(this.seta) + tempY * Math.cos(this.seta))
 
             rx += this.posX;
             ry += this.posY;
@@ -81,14 +81,14 @@ class HeartObject
             ry = ry + radius * 2;
 
             rx -= radius;
+            
+            rx *= this.scale;
+            ry *= this.scale;
 
             tempX = rx;
             tempY = ry;
             rx = (tempX * Math.cos(this.seta) + tempY * Math.sin(this.seta));
             ry = (tempX * -Math.sin(this.seta) + tempY * Math.cos(this.seta));
-            
-            rx *= this.scale;
-            ry *= this.scale;
 
             rx += this.posX;
             ry += this.posY;
@@ -109,14 +109,14 @@ class HeartObject
             ry = ry + radius * 2;
 
             rx -= radius;
+            
+            rx *= this.scale;
+            ry *= this.scale;
 
             tempX = rx;
             tempY = ry;
             rx = (tempX * Math.cos(this.seta) + tempY * Math.sin(this.seta));
-            ry = (tempX * -Math.sin(this.seta) + tempY * Math.cos(this.seta));
-
-            rx *= this.scale;
-            ry *= this.scale;
+            ry = (tempX * -Math.sin(this.seta) + tempY * Math.cos(this.seta))
 
             rx += this.posX;
             ry += this.posY;
@@ -136,14 +136,14 @@ class HeartObject
             rx = rx + radius * 2;
             
             rx -= radius;
+            
+            rx *= this.scale;
+            ry *= this.scale;
 
             tempX = rx;
             tempY = ry;
             rx = (tempX * Math.cos(this.seta) + tempY * Math.sin(this.seta));
-            ry = (tempX * -Math.sin(this.seta) + tempY * Math.cos(this.seta));
-
-            rx *= this.scale;
-            ry *= this.scale;
+            ry = (tempX * -Math.sin(this.seta) + tempY * Math.cos(this.seta))
 
             rx += this.posX;
             ry += this.posY;
@@ -163,14 +163,14 @@ class HeartObject
             rx = rx + radius * 2;
 
             rx -= radius;
+            
+            rx *= this.scale;
+            ry *= this.scale;
 
             tempX = rx;
             tempY = ry;
             rx = (tempX * Math.cos(this.seta) + tempY * Math.sin(this.seta));
-            ry = (tempX * -Math.sin(this.seta) + tempY * Math.cos(this.seta));
-
-            rx *= this.scale;
-            ry *= this.scale;
+            ry = (tempX * -Math.sin(this.seta) + tempY * Math.cos(this.seta))
 
             rx += this.posX;
             ry += this.posY;
@@ -190,14 +190,14 @@ class HeartObject
             rx = rx + radius * 2;
 
             rx -= radius;
+            
+            rx *= this.scale;
+            ry *= this.scale;
 
             tempX = rx;
             tempY = ry;
             rx = (tempX * Math.cos(this.seta) + tempY * Math.sin(this.seta));
-            ry = (tempX * -Math.sin(this.seta) + tempY * Math.cos(this.seta));
-
-            rx *= this.scale;
-            ry *= this.scale;
+            ry = (tempX * -Math.sin(this.seta) + tempY * Math.cos(this.seta))
 
             rx += this.posX;
             ry += this.posY;
@@ -220,53 +220,25 @@ class Vector
 
 class MouseEffector
 {
-    constructor(x, y, color, particleScale, speed)
+    constructor(x, y, color, particleScale, speed, direction)
     {
         this.x = x;
         this.y = y;
         this.color = color;
         this.scale = particleScale;
         this.speed = speed;
-        this.particles = 
-        [
-            new HeartObject(this.x, this.y, this.color, this.scale),
-            new HeartObject(this.x, this.y, this.color, this.scale),
-            new HeartObject(this.x, this.y, this.color, this.scale),
-            new HeartObject(this.x, this.y, this.color, this.scale),
-            new HeartObject(this.x, this.y, this.color, this.scale),
-            new HeartObject(this.x, this.y, this.color, this.scale),
-            new HeartObject(this.x, this.y, this.color, this.scale),
-            new HeartObject(this.x, this.y, this.color, this.scale),
-        ];
-        this.directions = 
-        [
-            new Vector(1, 0),
-            new Vector(0.75, 0.75),
-            new Vector(0, 1),
-            new Vector(-0.75, 0.75),
-            new Vector(-1, 0),
-            new Vector(-0.75, -0.75),
-            new Vector(0, -1),
-            new Vector(0.75, -0.75),
-        ];
+        this.particle = new HeartObject(this.x, this.y, this.color, this.scale)
+        this.direction = direction;
     }
 
     draw()
     {
-        var i = 0;
-        this.particles.forEach(element => {
-            element.seta = Math.atan2(this.directions[i].x, this.directions[i].y);
-            element.posX += (this.directions[i].x * this.speed);
-            element.posY += (this.directions[i].y * this.speed);
-            if(element.scale > 1)
-                element.scale -= 0.05;
-            element.draw();
-            i++;
-        });
+        this.particle.seta = Math.atan2(this.direction.x, this.direction.y);
+        this.particle.posX += (this.direction.x * this.speed);
+        this.particle.posY += (this.direction.y * this.speed);
+        this.particle.draw();
     }
 }
-
-var ctx = canvas.getContext("2d");
 
 class EffectPool
 {
@@ -283,13 +255,7 @@ class EffectPool
 
     update()
     {
-        var currentDate = new Date();
-        if (currentDate.getTime() - this.prevDate.getTime() > 100 && this.pool.length > 15)
-        {
-            this.pool.shift();
-            this.prevDate = currentDate;
-        }
-        if(this.pool.length > 20)
+        if(this.pool.length > 100)
         {
             this.pool.shift();
         }
@@ -299,6 +265,7 @@ class EffectPool
     }
 }
 
+var ctx = canvas.getContext("2d");
 var posX = 0;
 var posY = 0;
 var prevPosX = 0;
@@ -317,11 +284,23 @@ var effectPool = new EffectPool();
 setInterval(() => {
     if (canvas.getContext) {
         var currentDate = new Date();
-        if (currentDate.getTime() - prevDate.getTime() > 20)
+        if (currentDate.getTime() - prevDate.getTime() > 200)
         {
             if(Math.abs(posX - prevPosX) > 30 || Math.abs(posY - prevPosY) > 30)
             {
-                effectPool.push(new MouseEffector(posX, posY, 'red', 4, 1));
+                var direction = new Vector(prevPosX - posX, prevPosY - posY);
+                var magnitude = Math.sqrt(direction.x * direction.x + direction.y * direction.y);
+                if(magnitude > 0)
+                    direction = new Vector(direction.x / magnitude, direction.y / magnitude);
+                
+                effectPool.push(
+                    new MouseEffector(
+                        posX, posY, 
+                        "#" + Math.floor(Math.random() * 0xFFFFFF).toString(16), 
+                        Math.random() * 8 + 1, 
+                        Math.random() * 4 + 1, 
+                        direction));
+                
                 prevPosX = posX;
                 prevPosY = posY;
             }
