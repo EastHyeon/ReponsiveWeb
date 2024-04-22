@@ -526,7 +526,22 @@ if(ctx)
                 {
                     for(var i = 0; i < Math.random() * 14 + 1; i++)
                     {
-                        enemyPool.push(new EnemyObject(-(Math.random() * (WIDTH * 2)), Math.random() * HEIGHT * 2 + 20, 20, 'black')); 
+                        enemyPool.push(new EnemyObject(-(Math.random() * WIDTH + 200) - 20, Math.random() * HEIGHT * 2 - HEIGHT, 20, 'black')); 
+                    }
+
+                    for(var i = 0; i < Math.random() * 14 + 1; i++)
+                    {
+                        enemyPool.push(new EnemyObject((Math.random() * WIDTH + 200) + 20, Math.random() * HEIGHT * 2 - HEIGHT, 20, 'black')); 
+                    }
+
+                    for(var i = 0; i < Math.random() * 14 + 1; i++)
+                    {
+                        enemyPool.push(new EnemyObject((Math.random() * WIDTH * 2) - WIDTH, -HEIGHT, 20, 'black')); 
+                    }
+
+                    for(var i = 0; i < Math.random() * 14 + 1; i++)
+                    {
+                        enemyPool.push(new EnemyObject((Math.random() * WIDTH * 2) - WIDTH, +HEIGHT, 20, 'black')); 
                     }
                     prevTime = new Date();
                 }
