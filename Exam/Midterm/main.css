@@ -1,0 +1,15 @@
+#myCanvas
+{
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    left: 50%;
+    transform: translate(-50%, 50px);
+    width: 480px;
+    height: 800px;
+    background-color: #B4B4B4;
+}
+body
+{
+    background-color: #4899F2;
+}
