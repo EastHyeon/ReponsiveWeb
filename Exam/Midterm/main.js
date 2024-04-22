@@ -406,7 +406,7 @@ class EnemyObject
     }
 }
 
-var GAMESTATE = 'game'
+var GAMESTATE = 'title'
 
 var playerPosX = 0;
 var playerPosY = 0;
@@ -536,12 +536,12 @@ if(ctx)
 
                     for(var i = 0; i < Math.random() * 14 + 1; i++)
                     {
-                        enemyPool.push(new EnemyObject((Math.random() * WIDTH * 2) - WIDTH, -HEIGHT, 20, 'black')); 
+                        enemyPool.push(new EnemyObject((Math.random() * WIDTH * 2) - WIDTH, -(Math.random() * 200)-HEIGHT - 20, 20, 'black')); 
                     }
 
                     for(var i = 0; i < Math.random() * 14 + 1; i++)
                     {
-                        enemyPool.push(new EnemyObject((Math.random() * WIDTH * 2) - WIDTH, +HEIGHT, 20, 'black')); 
+                        enemyPool.push(new EnemyObject((Math.random() * WIDTH * 2) - WIDTH, (Math.random() * 200) +HEIGHT + 20, 20, 'black')); 
                     }
                     prevTime = new Date();
                 }
