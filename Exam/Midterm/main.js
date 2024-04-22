@@ -363,7 +363,22 @@ class EnemyObject
         ctx.fillStyle = this.color;
         ctx.beginPath();
         var radius = 1;
-        ctx.moveTo(this.x, this.y);
+        var fx = 0;
+        var fy = 0;
+
+        fx += STAR_VERTEX[0][0];
+        fy += STAR_VERTEX[0][1];
+        
+        fx *= this.scale;
+        fy *= this.scale;
+        
+        fx += WIDTH;
+        fy += HEIGHT;
+        
+        fx += this.x;
+        fy += this.y;
+
+        ctx.moveTo(fx, fy);
         for(var i = 0; i < Math.PI * 2; i += 0.01)
         {
             var rx = radius;
